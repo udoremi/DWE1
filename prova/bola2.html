@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: left;
+        }
+
+        hr {
+            margin: 10px 0 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .btn-group {
+            margin: 5px;
+        }
+
+        .box {
+            width: 45%;
+            height: 400px;
+            border: 2px solid #d6d6d6;
+            
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px;
+            overflow: hidden;
+            align-content: flex-start;
+            justify-content: flex-start;
+        }
+
+        .selected {
+            border: 3px solid green;
+            background-color: #e6f7e6;
+        }
+
+        .item {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            overflow: hidden;
+            word-wrap: break-word;
+            width: 50px;
+            height: 50px;
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercício 2</h1>
+    <hr>
+
+    <div class="controls container">
+        <div>
+            <div>Posição</div>
+            <div class="btn-group">
+                <button id="left-start" class="btn btn-primary">Início</button>
+                <button id="left-end" class="btn btn-outline-primary">Final</button>
+            </div>
+        </div>
+
+        <div>
+            <div>Palavra</div>
+            <div class="btn-group">
+                <button id="add-word" class="btn btn-primary">Adicionar</button>
+                <button id="remove-word" class="btn btn-outline-danger">Remover</button>
+            </div>
+        </div>
+
+        <div>
+            <div>Imagens</div>
+            <div class="btn-group">
+                <button id="add-image" class="btn btn-primary">Adicionar</button>
+                <button id="remove-image" class="btn btn-outline-danger">Remover</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="left-box" class="box"></div>
+        <div id="right-box" class="box"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const addWordBtn = document.getElementById('add-word');
+        const removeWordBtn = document.getElementById('remove-word');
+        const addImageBtn = document.getElementById('add-image');
+        const removeImageBtn = document.getElementById('remove-image');
+
+        const leftStartBtn = document.getElementById('left-start');
+        const leftEndBtn = document.getElementById('left-end');
+
+        const leftBox = document.getElementById('left-box');
+        const rightBox = document.getElementById('right-box');
+
+        let selectedBox = leftBox;
+        let insertPosition = 'start';
+
+        function selectBox(box) {
+            leftBox.classList.remove('selected');
+            rightBox.classList.remove('selected');
+            box.classList.add('selected');
+            selectedBox = box;
+        }
+
+        leftBox.addEventListener('click', () => selectBox(leftBox));
+        rightBox.addEventListener('click', () => selectBox(rightBox));
+
+        function addItem(type) {
+            const newItem = document.createElement('div');
+
+            if (type === 'word') {
+                newItem.textContent = 'Lorem';
+            } else if (type === 'image') {
+                const img = document.createElement('img');
+                img.src = 'bola.png';
+                img.alt = 'Bola';
+                newItem.appendChild(img);
+            }
+
+            newItem.classList.add('item');
+            if (insertPosition === 'start') {
+                selectedBox.append(newItem);
+            } else {
+                selectedBox.appendChild(newItem);
+                selectedBox.style.alignContent = 'flex-end';
+                selectedBox.style.justifyContent = 'flex-end';
+            }
+        }
+
+        function removeLastItem(type) {
+            const items = Array.from(selectedBox.getElementsByClassName('item'));
+            if (type === 'word') {
+                const wordItem = items.find(item => !item.querySelector('img'));
+                if (wordItem) wordItem.remove();
+            } else if (type === 'image') {
+                const imageItem = items.find(item => item.querySelector('img'));
+                if (imageItem) imageItem.remove();
+            }
+        }
+
+        leftStartBtn.addEventListener('click', () => {
+            insertPosition = 'start';
+            leftBox.style.alignContent = 'flex-start';
+            leftBox.style.justifyContent = 'flex-start';
+        });
+
+        leftEndBtn.addEventListener('click', () => {
+            insertPosition = 'end';
+            leftBox.style.alignContent = 'flex-end';
+            leftBox.style.justifyContent = 'flex-end';
+        });
+
+        addWordBtn.addEventListener('click', () => addItem('word'));
+        removeWordBtn.addEventListener('click', () => removeLastItem('word'));
+        addImageBtn.addEventListener('click', () => addItem('image'));
+        removeImageBtn.addEventListener('click', () => removeLastItem('image'));
+
+        rightBox.addEventListener('click', () => selectBox(rightBox));
+    </script>
+</body>
+</html>

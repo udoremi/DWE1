@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando 4 - Mini-game JS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .instructions {
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        ol {
+            margin: 10px 0;
+        }
+
+        .keyboard-icons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .keyboard-icons span {
+            display: inline-block;
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            margin: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .game-area {
+            width: 100%;
+            height: calc(100vh - 200px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .square {
+            width: 80px;
+            height: 80px;
+            border: 5px solid black;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .red { background-color: red; }
+        .blue { background-color: blue; }
+        .green { background-color: green; }
+
+        .selected {
+            z-index: 10;
+            border: 5px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Praticando 4 - Mini-game JS</h1>
+    <h2 class="instructions">Instruções:</h2>
+    <ol>
+        <li>Clique em um dos quadrados coloridos</li>
+        <li>Depois use as teclas <strong>W</strong>, <strong>A</strong>, <strong>S</strong>, <strong>D</strong> para movimentar os elementos para cima, esquerda, baixo e direita, respectivamente</li>
+    </ol>
+
+    <div class="keyboard-icons">
+        <span>W <i class="bi bi-arrow-up"></i></span>
+        <span>A <i class="bi bi-arrow-left"></i></span>
+        <span>S <i class="bi bi-arrow-down"></i></span>
+        <span>D <i class="bi bi-arrow-right"></i></span>
+    </div>
+
+    <div class="game-area">
+        <div class="square red" data-initial-top="50" data-initial-left="50"></div>
+        <div class="square blue" data-initial-top="50" data-initial-left="200"></div>
+        <div class="square green" data-initial-top="50" data-initial-left="350"></div>
+    </div>
+
+    <script>
+        const squares = document.querySelectorAll('.square');
+        let selectedSquare = null;
+
+        // Configura as posições iniciais ao carregar a página
+        squares.forEach(square => {
+            const initialTop = parseInt(square.dataset.initialTop);
+            const initialLeft = parseInt(square.dataset.initialLeft);
+            square.style.top = `${initialTop}px`;
+            square.style.left = `${initialLeft}px`;
+        });
+
+        // Selecionar ou desmarcar quadrados
+        squares.forEach(square => {
+            square.addEventListener('click', () => {
+                if (selectedSquare && selectedSquare !== square) {
+                    alert('Já existe um quadrado selecionado!');
+                    return;
+                }
+
+                if (selectedSquare === square) {
+                    // Voltar o quadrado para a posição inicial
+                    resetToInitialPosition(square);
+                    square.classList.remove('selected');
+                    selectedSquare = null;
+                } else {
+                    square.classList.add('selected');
+                    selectedSquare = square;
+                }
+            });
+        });
+
+        // Função para redefinir a posição inicial
+        function resetToInitialPosition(square) {
+            const initialTop = parseInt(square.dataset.initialTop);
+            const initialLeft = parseInt(square.dataset.initialLeft);
+            square.style.top = `${initialTop}px`;
+            square.style.left = `${initialLeft}px`;
+        }
+
+        // Movimentação com teclas WASD
+        document.addEventListener('keydown', event => {
+            if (!selectedSquare) return;
+
+            const step = 10;
+            const currentTop = parseInt(selectedSquare.style.top);
+            const currentLeft = parseInt(selectedSquare.style.left);
+
+            switch (event.key.toLowerCase()) {
+                case 'w': // Cima
+                    selectedSquare.style.top = `${Math.max(currentTop - step, 0)}px`;
+                    break;
+                case 's': // Baixo
+                    selectedSquare.style.top = `${Math.min(currentTop + step, window.innerHeight - selectedSquare.offsetHeight)}px`;
+                    break;
+                case 'a': // Esquerda
+                    selectedSquare.style.left = `${Math.max(currentLeft - step, 0)}px`;
+                    break;
+                case 'd': // Direita
+                    selectedSquare.style.left = `${Math.min(currentLeft + step, window.innerWidth - selectedSquare.offsetWidth)}px`;
+                    break;
+                default:
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

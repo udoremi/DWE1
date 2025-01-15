@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando 1 - JQuery</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+    pergNome();
+});
+
+function pergNome() {
+    var nome = prompt('Qual é o seu nome?');
+
+    if (nome === null) {
+        alert('Você cancelou.');
+    } else {
+        cumprimentar(nome);
+    }
+}
+
+function cumprimentar(nome) {
+    if (confirm('Olá, ' + nome + '!\n\n' + 'Você sabe programar em JavaScript?')) {
+        alert('Que bom, ' + nome + '! Espero que você aprenda ainda mais!');
+    } else {
+        alert('Não tem problema, ' + nome + '! Você irá aprender agora!');
+    }
+}
+    </script>
+</head>
+<body>
+    <h1>Praticando 1 - JQuery</h1>
+</body>
+</html>

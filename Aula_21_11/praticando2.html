@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .col-md-6{
+        margin-top: 45px;
+    }
+    h1{
+        margin-left: 120px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Praticando 2 - JavaScript - Mini Calculadora</h1>
+  <div class="container mt-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-md-2">
+        <label for="numero1" class="form-label">Número 1</label>
+        <input type="text" id="numero1" class="form-control">
+      </div>
+
+      <div class="col-md-2">
+        <label for="numero2" class="form-label">Número 2</label>
+        <input type="text" id="numero2" class="form-control">
+      </div>
+
+      <div class="col-md-2">
+        <label for="resultado" class="form-label">Resultado</label>
+        <input type="text" id="resultado" class="form-control" disabled readonly>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-primary" onclick="calcular('soma')">Soma</button>
+        <button class="btn btn-primary" onclick="calcular('subtracao')">Subtração</button>
+        <button class="btn btn-primary" onclick="calcular('multiplicacao')">Multiplicação</button>
+        <button class="btn btn-primary" onclick="calcular('divisao')">Divisão</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calcular(operacao) {
+
+      const numero1 = parseFloat(document.getElementById('numero1').value);
+      const numero2 = parseFloat(document.getElementById('numero2').value);
+
+      let resultado = 0;
+
+      if (operacao === 'soma') {
+        resultado = numero1 + numero2;
+      } else if (operacao === 'subtracao') {
+        resultado = numero1 - numero2;
+      } else if (operacao === 'multiplicacao') {
+        resultado = numero1 * numero2;
+      } else if (operacao === 'divisao') {
+        if (numero2 === 0) {
+          alert("Divisão por zero não é permitida!");
+          return;
+        }
+        resultado = numero1 / numero2;
+      }
+
+      document.getElementById('resultado').value = resultado;
+    }
+  </script>
+</body>
+</html>

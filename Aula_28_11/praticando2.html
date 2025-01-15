@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lâmpada</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+
+        .lampada {
+            cursor: pointer;
+            width: 150px;
+        }
+
+        .acesa {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <img 
+        src="imagens/lampada.png" 
+        alt="Lâmpada apagada" 
+        class="lampada" 
+        id="lampada">
+    <h1 id="status-lampada">Lâmpada apagada</h1>
+
+    <script>
+        const body = document.body;
+        const lampada = document.getElementById("lampada");
+        const statusLampada = document.getElementById("status-lampada");
+
+        lampada.addEventListener("mouseover", () => {
+            lampada.src = "imagens/lampada-acesa.png"; 
+            statusLampada.textContent = "Lâmpada acesa"; 
+            body.classList.add("acesa"); 
+        });
+
+        lampada.addEventListener("mouseout", () => {
+            lampada.src = "imagens/lampada.png"; 
+            statusLampada.textContent = "Lâmpada apagada"; 
+            body.classList.remove("acesa"); 
+        });
+    </script>
+</body>
+</html>

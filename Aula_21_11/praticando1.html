@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-left: 50px;
+        }
+        p{
+            font-size: 1.5em;
+        }
+        span{
+            font-weight: bold;
+        }
+        .borda{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Praticando 1 - JavaScript</h1>
+    <p id="name">Seja bem vindo, <span></span></p>
+
+    <button onclick="add()">Adicionar texto (parágrafo de Lorem Ipsum)</button> <br> <br>
+    <button onclick="rem()">Remover texto (todos os parágrafos)</button>
+
+    <div class="textos"></div>
+
+    <script>
+        var nome = prompt('Qual é o seu nome?');
+
+        document.getElementsByTagName("span")[0].innerHTML = nome;
+
+        function add(){
+            var elemento = document.getElementsByClassName("textos");
+
+            elemento[0].innerHTML += "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo velit reprehenderit sit voluptate ad, incidunt qui, ducimus architecto rem, consequatur officiis. Nihil amet vitae temporibus commodi error quaerat vel esse! <br>";
+        }
+
+        function rem(){
+            var elemento = document.getElementsByClassName("textos");
+
+            elemento[0].innerHTML = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .navbar {
+      margin-bottom: 20px;
+    }
+    .container{
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Evento de Tecnologia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="sobre.html"><i class="bi bi-info-circle me-1"></i>Sobre Nós</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="localizacao.html"><i class="bi bi-geo-alt me-1"></i>Localização</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="mb-4 text-center">Formulário para inscrição no evento de tecnologia</h1>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="tel" class="form-control" id="telefone" placeholder="Digite seu telefone">
+        </div>
+        <div class="col-md-6">
+          <label for="site" class="form-label">GitHub/Portfólio</label>
+          <input type="url" class="form-control" id="site" placeholder="Digite a URL do seu site">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="ano" class="form-label">Anos de Experiência na Área</label>
+          <input type="number" class="form-control" id="ano" placeholder="Digite seu tempo de experiência">
+        </div>
+        <div class="col-md-6">
+          <label for="data" class="form-label">Data de Nascimento</label>
+          <input type="date" class="form-control" id="data">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="arquivo" class="form-label">Envie uma foto para seu crachá</label>
+          <input type="file" class="form-control" id="arquivo">
+        </div>
+        <div class="col-md-6">
+          <label for="opcoes" class="form-label">Principal área de interesse:</label>
+          <select class="form-select" id="opcoes">
+            <option selected>Selecione uma opção</option>
+            <option value="1">Hardware</option>
+            <option value="2">Software</option>
+            <option value="3">Robótica</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <label for="mensagem" class="form-label">Mensagem</label>
+          <textarea class="form-control" id="mensagem" rows="4" placeholder="Deixe uma mensagem ou sugestão"></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Experiência com Tecnologia:</label>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio1" name="radio-opcoes">
+            <label for="radio1" class="form-check-label">Básico</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio4" name="radio-opcoes">
+            <label for="radio4" class="form-check-label">Iniciante</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio2" name="radio-opcoes">
+            <label for="radio2" class="form-check-label">Intermediário</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio3" name="radio-opcoes">
+            <label for="radio3" class="form-check-label">Avançado</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Recursos ou Benefícios Esperados do Evento:</label>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check1">
+            <label for="check1" class="form-check-label">Palestras inspiradoras</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check2">
+            <label for="check2" class="form-check-label">Networking com profissionais</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check3">
+            <label for="check3" class="form-check-label">Workshops práticos</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check4">
+            <label for="check4" class="form-check-label">Acesso a materiais exclusivos</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-primary w-100" onclick="enviado()">Enviar</button>
+        </div>
+        <div class="col-md-6">
+          <button type="reset" class="btn btn-secondary w-100">Limpar</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+    <script>
+        function enviado(){
+            alert('Dados enviados com sucesso!')
+        }
+    </script>
+</body>
+</html>

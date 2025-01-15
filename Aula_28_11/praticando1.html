@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <style>
+      img{
+        width: 150px;
+        height: 100px;
+      }
+    </style>
+</head>
+<body>
+    <div class="container my-2">
+        <h1 class="mb-4">Praticando 1 - Manipulações</h1>
+
+        <div class="row mb-3">
+            <div class="col-md-1">
+                <label class="form-label">Lado</label> <br>
+                
+                    <button class="btn btn-primary" id="lado-esquerdo">Esquerdo</button>
+                    <button class="btn btn-outline-info" id="lado-direito">Direito</button>
+                
+            </div>
+
+            <!-- Parágrafos -->
+            <div class="col-md-6 ">
+                <label class="form-label">Parágrafos</label> <br>
+                
+                    <button class="btn btn-primary" id="add-paragrafo">Adicionar</button>
+                    <button class="btn btn-primary" id="remove-primeiro">Remover primeiro</button>
+                    <button class="btn btn-primary" id="remove-ultimo">Remover último</button>
+                    <button class="btn btn-primary" id="remove-todos">Remover todos</button>
+                
+            </div>
+
+            <!-- Imagens -->
+            <div class="col-md-5">
+                <label class="form-label">Imagens</label> <br>
+                
+                    <button class="btn btn-primary" id="add-imagem">Adicionar</button>
+                    <button class="btn btn-primary" id="remove-imagem">Remover uma</button>
+                    <button class="btn btn-primary" id="remove-todas-imagens">Remover todas</button>
+                
+            </div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div id="paragrafos" class="mt-3"></div>
+        <div id="imagens" class="mt-3"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Controle do Lado
+        const paragrafosContainer = document.getElementById("paragrafos");
+        const imagensContainer = document.getElementById("imagens");
+        document.getElementById("lado-esquerdo").addEventListener("click", () => {
+            paragrafosContainer.style.textAlign = "left";
+            imagensContainer.style.textAlign = "left";
+        });
+        document.getElementById("lado-direito").addEventListener("click", () => {
+            paragrafosContainer.style.textAlign = "right";
+            imagensContainer.style.textAlign = "right";
+        });
+
+        // Controle dos Parágrafos
+        let contador = 0;
+
+        document.getElementById("add-paragrafo").addEventListener("click", () => {
+            const p = document.createElement("p");
+            p.textContent = `#${contador}: Lorem ipsum dolor sit amet consectetur adipiscing elit.`;
+            paragrafosContainer.appendChild(p);
+            contador++;
+        });
+
+        document.getElementById("remove-primeiro").addEventListener("click", () => {
+            if (paragrafosContainer.firstChild) {
+                paragrafosContainer.removeChild(paragrafosContainer.firstChild);
+                atualizarContadores();
+            }
+        });
+
+        document.getElementById("remove-ultimo").addEventListener("click", () => {
+            if (paragrafosContainer.lastChild) {
+                paragrafosContainer.removeChild(paragrafosContainer.lastChild);
+                atualizarContadores();
+            }
+        });
+
+        document.getElementById("remove-todos").addEventListener("click", () => {
+            paragrafosContainer.innerHTML = "";
+            contador = 0;
+        });
+
+
+        // Controle das Imagens
+        document.getElementById("add-imagem").addEventListener("click", () => {
+            const img = document.createElement("img");
+            img.src = "imagens/gatinho.jpg";
+            img.alt = "Imagem de exemplo";
+            img.className = "me-2 mb-2";
+            imagensContainer.appendChild(img);
+        });
+
+        document.getElementById("remove-imagem").addEventListener("click", () => {
+            if (imagensContainer.firstChild) {
+                imagensContainer.removeChild(imagensContainer.firstChild);
+            }
+        });
+
+        document.getElementById("remove-todas-imagens").addEventListener("click", () => {
+            imagensContainer.innerHTML = "";
+        });
+    </script>
+</body>
+</html>

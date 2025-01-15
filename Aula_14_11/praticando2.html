@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando 2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+        body{
+            background-image: linear-gradient(to right, #1a4d89, #6eab0d);
+            font-family: "Quicksand", sans-serif;
+            font-weight: 600;
+            text-align: center;
+        }
+        .container{
+            display: inline-block;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .botao{
+            border-radius: 5px;
+            border: 2px solid black;
+            font-size: 13pt;
+        }
+        #areatxt{
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        .marca {
+            width: 100px;
+            text-align: right;
+        }
+        .filmes{
+            display: flex;
+            width: 750px;
+        }
+        .carro{
+         text-align: center;
+         width: 600px;
+        }
+        .carro label{
+            width: 20px;
+            
+        }
+        .quero{
+            display: flex;
+            align-items: center;
+        }
+        select{
+            width: 180px;
+            height: 22px;
+        }
+        .opc{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Praticando 2 - Formulários HTML</h1>
+    <div class="container">
+        <form action="">
+            <label for="nome">Nome:</label>
+            <input type="text"> <br> <br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="seu@email.aqui"> <br> <br>
+        
+            <div class="carro">
+                <label for="lista" class="carro">Marca de Carro preferida:</label>
+                <select name="carro" id="carro">
+                    <option value="VolksWagen">VolksWagen</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="GM">GM</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Ford">Ford</option>
+                </select>
+            </div>
+            
+            <br> <br>
+
+            <label for="areatxt">Observações:</label> 
+            <textarea name="" id="areatxt" cols="30" rows="5"></textarea> <br> <br>
+
+            <label for="web">Linguagem web favorita</label>
+            <input type="radio" name="html" id="html">
+            <label for="html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" alt=""></label>
+            <input type="radio" name="html" id="css">
+            <label for="css"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt=""></label>
+            <input type="radio" name="html" id="js">
+            <label for="js"><img src="https://img.icons8.com/?size=512&id=108784&format=png" alt=""></label> <br> <br>
+
+            <div class="filmes">
+                <div class="quero">
+                    <label for="filmes">Filmes que eu quero ver quando lançar:</label> <br>
+                </div>
+                <div class="opc">
+                    <input type="checkbox" name="ca" id="ca">
+                    <label for="ca"><a href="">Capitão América: Admirável Mundo Novo</a></label> <br>
+                    <input type="checkbox" name="av" id="av">
+                    <label for="av"><a href="">Avengers: The Kang Dinasty</a></label>  <br>
+                    <input type="checkbox">
+                    <label for="ac2"><a href="">O Auto da Compadecida 2</a></label> <br>
+                    <input type="checkbox" name="" id="">
+                    <label for="av"><a href="">Avatar 3: Fogo e Cinzas</a></label> <br> <br>
+                </div>
+            </div>
+
+            <input type="button" value="Enviar" class="botao">
+            <input type="reset" value="Limpar" class="botao">
+        </form>
+    </div>
+</body>
+</html>

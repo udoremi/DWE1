@@ -1,0 +1,65 @@
+table, td{
+    border: solid 1px black;
+    color: black;
+    padding: 1px;
+}
+
+table{
+    border-collapse: collapse;
+    background-color: white;
+}
+
+body{
+    background-color: lightgray;
+}
+
+.lista{
+    color: black;
+}
+
+.linha1{
+    background-color: gray;
+    font-weight: bold;
+}
+
+.amarelo{
+    background-color: yellow;
+    color: black;
+}
+
+.sp{
+    background-color: #fceccc;
+    color: #c03a2f;
+}
+
+.rj{
+    background-color: #d2e0fb;
+    color: #2d639c;
+}
+
+.mg{
+    background-color: #fff9e1;
+    color: #4b7658;
+}
+
+#sp{
+    background-color: #fceccc;
+    color: #c03a2f;
+}
+
+#rj{
+    background-color: #d2e0fb;
+    color: #2d639c;
+}
+
+#mg{
+    background-color: #fff9e1;
+    color: #4b7658;
+}
+
+img{
+    max-width: 300px;
+    max-height: 250px;
+    min-width: 300px;
+    min-height: 250px;
+}

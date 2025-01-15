@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando 5 - Mini-game JS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .instructions {
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        ol {
+            margin: 10px 0;
+        }
+
+        .keyboard-icons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .keyboard-icons span {
+            display: inline-block;
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            margin: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .game-area {
+            width: 100%;
+            height: calc(100vh - 200px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .square {
+            width: 80px;
+            height: 80px;
+            border: 5px solid black;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .red { background-color: red; }
+        .blue { background-color: blue; }
+        .green { background-color: green; }
+
+        .selected {
+            z-index: 10;
+            border: 5px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Praticando 5 - Mini-game JS</h1>
+    <h2 class="instructions">Instruções:</h2>
+    <ol>
+        <li>Clique em um dos quadrados coloridos</li>
+        <li>Depois use as teclas <strong>W</strong>, <strong>A</strong>, <strong>S</strong>, <strong>D</strong> para movimentar os elementos para cima, esquerda, baixo e direita, respectivamente</li>
+    </ol>
+
+    <div class="keyboard-icons">
+        <span>W <i class="bi bi-arrow-up"></i></span>
+        <span>A <i class="bi bi-arrow-left"></i></span>
+        <span>S <i class="bi bi-arrow-down"></i></span>
+        <span>D <i class="bi bi-arrow-right"></i></span>
+    </div>
+
+    <div class="game-area">
+        <div class="square red" data-initial-top="50" data-initial-left="50"></div>
+        <div class="square blue" data-initial-top="50" data-initial-left="200"></div>
+        <div class="square green" data-initial-top="50" data-initial-left="350"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let selectedSquare = null;
+
+            $('.square').each(function() {
+                const initialTop = $(this).data('initial-top');
+                const initialLeft = $(this).data('initial-left');
+                $(this).css({ top: `${initialTop}px`, left: `${initialLeft}px` });
+            });
+
+            $('.square').click(function() {
+                if (selectedSquare && selectedSquare !== this) {
+                    alert('Já existe um quadrado selecionado!');
+                    return;
+                }
+
+                if (selectedSquare === this) {
+                    resetToInitialPosition($(this));
+                    $(this).removeClass('selected');
+                    selectedSquare = null;
+                } else {
+                    $(this).addClass('selected');
+                    selectedSquare = this;
+                }
+            });
+
+            function resetToInitialPosition(square) {
+                const initialTop = square.data('initial-top');
+                const initialLeft = square.data('initial-left');
+                square.css({ top: `${initialTop}px`, left: `${initialLeft}px` });
+            }
+
+            $(document).keydown(function(event) {
+                if (!selectedSquare) return;
+
+                const step = 10;
+                const $square = $(selectedSquare);
+                const currentTop = parseInt($square.css('top'));
+                const currentLeft = parseInt($square.css('left'));
+
+                switch (event.key.toLowerCase()) {
+                    case 'w': 
+                        $square.css('top', Math.max(currentTop - step, 0) + 'px');
+                        break;
+                    case 's': 
+                        $square.css('top', Math.min(currentTop + step, $(window).height() - $square.outerHeight()) + 'px');
+                        break;
+                    case 'a': 
+                        $square.css('left', Math.max(currentLeft - step, 0) + 'px');
+                        break;
+                    case 'd': 
+                        $square.css('left', Math.min(currentLeft + step, $(window).width() - $square.outerWidth()) + 'px');
+                        break;
+                    default:
+                        break;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

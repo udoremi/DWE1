@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lâmpada</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+
+        .lampada {
+            cursor: pointer;
+            width: 150px;
+        }
+
+        .acesa {
+            background-color: white;
+            color: black;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <img 
+        src="imagens/lampada.png" 
+        alt="Lâmpada apagada" 
+        class="lampada" 
+        id="lampada">
+    <h1 id="status-lampada">Lâmpada apagada</h1>
+
+    <script>
+        $(document).ready(function() {
+            const $body = $('body');
+            const $lampada = $('#lampada');
+            const $statusLampada = $('#status-lampada');
+
+            $lampada.on('mouseover', function() {
+                $lampada.attr('src', 'imagens/lampada-acesa.png');
+                $statusLampada.text('Lâmpada acesa');
+                $body.addClass('acesa');
+            });
+
+            $lampada.on('mouseout', function() {
+                $lampada.attr('src', 'imagens/lampada.png');
+                $statusLampada.text('Lâmpada apagada');
+                $body.removeClass('acesa');
+            });
+        });
+    </script>
+</body>
+</html>

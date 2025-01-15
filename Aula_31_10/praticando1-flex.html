@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        *{
+        margin: 0;
+        padding: 0;
+        }   
+        body{
+            font-family: "Montserrat", sans-serif;
+            background-color: rgb(178, 245, 182);
+        }
+        h1, h2{
+            margin: 0px 0px 20px 20px;
+            font-weight: 400;
+            padding: 5px;
+        }
+        main{
+            background-color: white;
+        }
+        footer{
+            font-family: 'Courier New';
+            text-align: center;
+            margin-bottom: 0;
+        }
+        footer p{
+            margin: 10px;
+        }
+        .menu{
+            display: flex;
+            justify-content: space-around;
+            font-size: 20px;
+            padding-bottom: 20px;
+        }
+        .container{
+            display: flex;
+            background-color: white;
+            border: 2px solid green;
+        }
+        .num{
+            display: flex;
+            flex-flow: row wrap;
+        }
+        .box{
+            margin: 0px 20px 20px 10px;
+            text-align: center;
+            border: solid 1px black;
+            padding: 3% 5% 0 5%;
+        }
+        .lateral{
+            width: 20vw;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px 10px;
+            border-left: 2px solid green;
+        }
+        span{
+            font-size: 35pt;
+            font-weight: 300;
+        }
+        .esq{
+            width: 80vw;
+            margin-bottom: 5%;
+        }
+        .lateral p{
+            font-weight: 300;
+            text-align: justify;
+            text-indent: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>..:: Meu layout de site com Flexbox ::..</h1>
+        <div class="menu">
+            <a href="">Início</a>
+            <a href="">Sobre</a>
+            <a href="">Produtos</a>
+            <a href="">Contato</a>
+        </div>
+    </header>
+        <div class="container">
+            <div class="esq">
+                <h2>Corpo do Site</h2>
+                <div class="num">
+                    <p class="box"><span>1</span> <br><br>One</p>
+                    <p class="box"><span>2</span> <br><br>Two</p>
+                    <p class="box"><span>3</span> <br><br>Third</p>
+                    <p class="box"><span>4</span> <br><br>Four</p>
+                    <p class="box"><span>5</span> <br><br>Five</p>
+                    <p class="box"><span>6</span> <br><br>Six</p>
+                    <p class="box"><span>7</span> <br><br>Seven</p>
+                    <p class="box"><span>8</span> <br><br>Eight</p>
+                    <p class="box"><span>9</span> <br><br>Nine</p>
+                    <p class="box"><span>10</span> <br><br>Ten</p>
+                </div>
+            </div>
+            <div class="lateral">
+                <h2>Box Lateral</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique voluptate vel, perferendis rerum dolorem nihil harum cumque itaque voluptates illum repudiandae quaerat autem unde tempore rem quod sapiente ipsam. Eos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Et placeat eius nihil ab repellat dignissimos incidunt. Optio aliquid non quibusdam. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus quam similique impedit, dolorem dolor id illo assumenda ipsa sed tempore?</p>
+            </div>
+        </div>
+    <footer>
+        <p>Criado por Matheus Selis</p>
+        <p>matheus.selis@aluno.ifsp.edu.br</p>
+    </footer>
+</body>
+</html>
